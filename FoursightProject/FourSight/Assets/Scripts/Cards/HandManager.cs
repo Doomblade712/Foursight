@@ -10,6 +10,7 @@ public class HandManager : MonoBehaviour
     public float fanSpread = 4.27f;
     public float cardSpacing = -184.1f;
     public float verticalSpacing = 61.3f;
+    public int maxHandSize = 6;
     public List<GameObject> cardsInHand = new List<GameObject>();
     void Start()
     {
@@ -19,6 +20,7 @@ public class HandManager : MonoBehaviour
     void Update()
     {
         //UpdateHandVisuals();
+
     }
 
     public void AddCardToHand(Card cardData)

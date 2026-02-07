@@ -215,7 +215,6 @@ RectTransform:
   m_Children:
   - {fileID: 1126132639}
   - {fileID: 944702429}
-  - {fileID: 2004506363}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -453,6 +452,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 944702429}
+  - component: {fileID: 944702430}
   m_Layer: 5
   m_Name: HandPosition
   m_TagString: Untagged
@@ -479,6 +479,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -432.19}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &944702430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944702428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a5e4cb61df67c4bb72f0540c126b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIObjectPositioner
+  objectToPosition: {fileID: 944702429}
+  widthDivier: 2
+  heightDivier: 2
+  widthMutiplier: 1
+  heightMutiplier: 0
+  updatePosition: 0
 --- !u!1 &1126132638
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +550,7 @@ MonoBehaviour:
   fanSpread: 4.27
   cardSpacing: -184.1
   verticalSpacing: 61.3
+  maxHandSize: 6
   cardsInHand: []
 --- !u!1 &1309835081
 GameObject:
@@ -700,7 +719,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2004506362
+--- !u!1 &1709995691
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -708,48 +727,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2004506363}
-  - component: {fileID: 2004506364}
-  m_Layer: 5
-  m_Name: DeckManager
+  - component: {fileID: 1709995693}
+  - component: {fileID: 1709995692}
+  m_Layer: 0
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &2004506363
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004506362}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 23474731}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2004506364
+--- !u!114 &1709995692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004506362}
+  m_GameObject: {fileID: 1709995691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a26c6ef032579f44ca3d539cf8fdf54a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a266a60447d9ec4aa8f890f6f8894aa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeckManager
-  allCards: []
-  currentIndex: 0
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+--- !u!4 &1709995693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709995691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1037.2723, y: 508.09305, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -760,3 +773,4 @@ SceneRoots:
   - {fileID: 1309835082}
   - {fileID: 1446676863}
   - {fileID: 23474731}
+  - {fileID: 1709995693}

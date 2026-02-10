@@ -17,5 +17,5 @@ MonoBehaviour:
   cardName: TestCard
   cardType: 0
   cardCost: 1
-  towerPrefab: {fileID: 0}
+  towerPrefab: {fileID: 776760402519811003, guid: 0b4fac97fb0717d4c84365abf6d7ef4c, type: 3}
   cardText: Im in your Walls

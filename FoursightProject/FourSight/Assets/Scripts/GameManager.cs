@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance {  get; private set; }
+    public static GameManager Instance {  get; private set; }
 
     private int stage;
 
@@ -10,15 +10,17 @@ public class GameManager : MonoBehaviour
     public AudioManager AudioManager { get; private set; }
     public DeckManager DeckManager { get; private set; }
 
+    public bool PlayingCard = false;
+
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
             InitializeManagers();
         }
-        else if (instance != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }

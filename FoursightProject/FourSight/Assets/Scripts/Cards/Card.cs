@@ -11,7 +11,7 @@ namespace FoursightProductions
         public string cardName;
         public CardType cardType;
         public int cardCost;
-        public Building towerPrefab;
+        public GameObject towerPrefab;
         public string cardText;
         
         public enum CardType

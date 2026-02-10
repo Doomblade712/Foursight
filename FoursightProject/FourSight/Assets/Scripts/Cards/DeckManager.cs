@@ -2,17 +2,17 @@ using FoursightProductions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FoursightProductions;
 public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
 
-    public int startingHandSize = 6;
-
-    private int currentIndex = 0;
-    public int maxHandSize;
+    public int startingHandSize = 9;
+    public int maxHandSize = 7;
     public int currentHandSize;
     private HandManager handManager;
+    private DrawPileManager drawPileManager;
+    private bool startMap = true;
 
     void Start()
     {
@@ -21,32 +21,36 @@ public class DeckManager : MonoBehaviour
 
         //Add the loaded cards to the allCards list
         allCards.AddRange(cards);
-
-        handManager = FindFirstObjectByType<HandManager>();
-        maxHandSize = handManager.maxHandSize;
-        for (int i = 0; i < startingHandSize; i++)
-        {
-            Debug.Log($"Drawing Card");
-            DrawCard(handManager);
-        }
     }
 
-    public void DrawCard(HandManager handManager)
+    void Awake()
     {
-
-        if (allCards.Count == 0)
-            return;
-
-        if (handManager != null)
+        if (drawPileManager == null)
         {
-            currentHandSize = handManager.cardsInHand.Count;
+            drawPileManager = FindFirstObjectByType<DrawPileManager>();
         }
-
-        if (currentHandSize < maxHandSize)
+        if (handManager == null)
         {
-            Card nextCard = allCards[currentIndex];
-            handManager.AddCardToHand(nextCard);
-            currentIndex = (currentIndex + 1) % allCards.Count;
+            handManager = FindFirstObjectByType<HandManager>();
         }
     }
+
+    void Update()
+    {
+        if (startMap)
+        {
+            BattleSetup();
+        }
+    }
+
+    public void BattleSetup()
+    {
+        handManager.roundSetup(maxHandSize);
+        drawPileManager.MakeDrawPile(allCards);
+        drawPileManager.roundSetup(startingHandSize, maxHandSize);
+        startMap = false;
+    }
+
+
+
 }

@@ -12,6 +12,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private int currentState = 0;
     private Quaternion originalRotation;
     private Vector3 originalPosition;
+    private GridManager gridManager;
+    private HandManager handManager;
 
     [SerializeField] private float playLerpSpeed = 10f;
     [SerializeField] private float selectScale = 1.1f;
@@ -45,6 +47,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
         updateCardPlayPostion();
         updatePlayPostion();
+        gridManager = FindFirstObjectByType<GridManager>();
+        HandManager handManager = FindFirstObjectByType<HandManager>();
     }
 
     void Update()
@@ -73,10 +77,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 break;
             case 3:
                 HandlePlayState();
-                if (!Mouse.current.leftButton.isPressed)
-                {
-                    TransitionToState0();
-                }
                 break;
         }
     }
@@ -84,6 +84,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private void TransitionToState0()
     {
         currentState = 0;
+        GameManager.Instance.PlayingCard = false;
         rectTransform.localScale = originalScale; //Reset Scale
         rectTransform.localRotation = originalRotation; //Reset Rotation
         rectTransform.localPosition = originalPosition; //Reset Position
@@ -147,9 +148,33 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     private void HandlePlayState()
     {
+        if (!GameManager.Instance.PlayingCard)
+        {
+            GameManager.Instance.PlayingCard = true;
+        }
+
         rectTransform.localRotation = Quaternion.identity;
         rectTransform.localPosition = playPosition;
-   
+
+        if (!Mouse.current.leftButton.isPressed)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            if(hit.collider != null && hit.collider.GetComponent<GridCell>())
+            {
+                GridCell cell = hit.collider.GetComponent<GridCell>();
+                Vector2 targetPos = cell.gridIndex;
+                if (gridManager.AddObjectToGrid(GetComponent<CardDisplay>().cardData.towerPrefab, targetPos))
+                {
+                    handManager.cardsInHand.Remove(this.gameObject);
+                    handManager.UpdateHandVisuals();
+                    Debug.Log("placed Character");
+                    Destroy(this.gameObject);
+                }
+            }
+            TransitionToState0();
+        }
 
         if (Mouse.current.position.ReadValue().y < cardPlay.y)
         {

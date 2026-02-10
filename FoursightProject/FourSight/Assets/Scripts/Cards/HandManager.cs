@@ -10,7 +10,7 @@ public class HandManager : MonoBehaviour
     public float fanSpread = 4.27f;
     public float cardSpacing = -184.1f;
     public float verticalSpacing = 61.3f;
-    public int maxHandSize = 6;
+    public int maxHandSize;
     public List<GameObject> cardsInHand = new List<GameObject>();
     void Start()
     {
@@ -23,6 +23,11 @@ public class HandManager : MonoBehaviour
 
     }
 
+    public void roundSetup(int setMaxHandSize)
+    {
+        maxHandSize = setMaxHandSize;
+    }
+
     public void AddCardToHand(Card cardData)
     {
         GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
@@ -33,7 +38,7 @@ public class HandManager : MonoBehaviour
         UpdateHandVisuals();
     }
 
-    private void UpdateHandVisuals()
+    public void UpdateHandVisuals()
     {
         int cardCount = cardsInHand.Count;
 

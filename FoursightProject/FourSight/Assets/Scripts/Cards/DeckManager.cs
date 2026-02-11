@@ -7,9 +7,9 @@ public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
 
-    public int startingHandSize = 9;
-    public int maxHandSize = 7;
-    public int currentHandSize;
+    public int startingHandSize = 6;
+    public int maxHandSize = 9;
+    public int currentHandSize = 0;
     private HandManager handManager;
     private DrawPileManager drawPileManager;
     private bool startMap = true;

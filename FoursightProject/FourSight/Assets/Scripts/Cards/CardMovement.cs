@@ -13,7 +13,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Quaternion originalRotation;
     private Vector3 originalPosition;
     private GridManager gridManager;
-    private HandManager handManager;
+    //public HandManager handManager;
+    //public DiscardManager discardManager;
 
     [SerializeField] private float playLerpSpeed = 10f;
     [SerializeField] private float selectScale = 1.1f;
@@ -30,6 +31,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private int playPositionXDivider = 4;
     [SerializeField] private float playPositionXMultiplier = 1f;
     [SerializeField] private bool needUpdatePlayPosition = false;
+
 
     void Awake()
     {
@@ -167,7 +169,10 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 Vector2 targetPos = cell.gridIndex;
                 if (gridManager.AddObjectToGrid(GetComponent<CardDisplay>().cardData.towerPrefab, targetPos))
                 {
-                    handManager.cardsInHand.Remove(this.gameObject);
+                    HandManager handManager = FindFirstObjectByType<HandManager>();
+                    DiscardManager discardManager = FindFirstObjectByType <DiscardManager>();
+                    discardManager.AddToDiscard(GetComponent<CardDisplay>().cardData);
+                    handManager.cardsInHand.Remove(gameObject);
                     handManager.UpdateHandVisuals();
                     Debug.Log("placed Character");
                     Destroy(this.gameObject);

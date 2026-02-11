@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 579319c53742a6c4ab198754ae8acfc0, type: 3}
-  m_Name: testCard
+  m_Name: TestWall
   m_EditorClassIdentifier: Assembly-CSharp::FoursightProductions.Card
   cardbackground: {fileID: 21300000, guid: 89be090c3d3ba4640a702068838f3b48, type: 3}
   cardArt: {fileID: 0}

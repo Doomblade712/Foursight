@@ -796,18 +796,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d667490edfa74064a87a0c7bfb1008bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardMovement
+  playLerpSpeed: 10
   selectScale: 1.01
-  cardPlay: {x: 0, y: 400}
-  playPosition: {x: -600, y: 500, z: 0}
+  cardPlay: {x: 0, y: 0}
+  playPosition: {x: -600, y: 200, z: 0}
   glowEffect: {fileID: 2982717042977521172}
   playArrow: {fileID: 5684193982189558133}
-  dragLerpSpeed: 20
-  playLerpSpeed: 10
-  returnToHandSpeed: 15
-  cardPlayDivider: 4
+  lerpFactor: 0.1
+  cardPlayDivider: 8
   cardPlayMultiplier: 1
-  needUpdateCardPlayPosition: 0
-  playPositionYDivider: 2
+  needUpdateCardPlayPosition: 1
+  playPositionYDivider: 4
   playPositionYMultiplier: 1
   playPositionXDivider: 4
   playPositionXMultiplier: 1

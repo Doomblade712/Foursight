@@ -7,18 +7,21 @@ using TMPro;
 public class DrawPileManager : MonoBehaviour
 {
     public List<Card> drawPile = new List<Card>();
-    public int startingHandSize = 6;
+    private int startingHandSize;
+    private int maxHandSize;
+    private int currentHandSize;
+
 
     private int currentIndex = 0;
-    public int maxHandSize;
-    public int currentHandSize;
     private HandManager handManager;
     private DiscardManager discardManager;
     public TextMeshProUGUI drawPileCounter;
+    private GameManager gameManager;
 
     void Start()
     {
         handManager = FindFirstObjectByType<HandManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     public void MakeDrawPile(List<Card> cardsToAdd)
@@ -44,13 +47,15 @@ public class DrawPileManager : MonoBehaviour
         {
             RefillDeckFromDiscard();
         }
-
-        if (currentHandSize < maxHandSize)
+        if (drawPile.Count > 0)
         {
-            Card nextCard = drawPile[currentIndex];
-            handManager.AddCardToHand(nextCard);
-            drawPile.RemoveAt(currentIndex);
-            if(drawPile.Count > 0) currentIndex %= drawPile.Count;
+            if (currentHandSize < maxHandSize)
+            {
+                Card nextCard = drawPile[currentIndex];
+                handManager.AddCardToHand(nextCard);
+                drawPile.RemoveAt(currentIndex);
+                if (drawPile.Count > 0) currentIndex %= drawPile.Count;
+            }
         }
     }
 

@@ -6,9 +6,9 @@ using TMPro;
 public class CardDisplay : MonoBehaviour
 {
     public Card cardData;
-    public Image cardImage;
-    public Image backgroundImage;
-    public Image cardTextBackgroundImage;
+    public Sprite cardImage;
+    public Sprite backgroundImage;
+    public Sprite cardTextBackgroundImage;
     public TMP_Text nameText;
     public TMP_Text cardText;
 

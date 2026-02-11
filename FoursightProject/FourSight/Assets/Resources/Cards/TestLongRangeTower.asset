@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579319c53742a6c4ab198754ae8acfc0, type: 3}
   m_Name: TestLongRangeTower
   m_EditorClassIdentifier: Assembly-CSharp::FoursightProductions.Card
-  cardbackground: {fileID: 21300000, guid: 89be090c3d3ba4640a702068838f3b48, type: 3}
-  cardArt: {fileID: 0}
-  cardName: TestCard
+  cardbackground: {fileID: 21300000, guid: 5aee895b2b589624b90be2240a5cdaac, type: 3}
+  cardArt: {fileID: 2301740323704151146, guid: e7456fd6c00509442bd6f5c43ad79f89, type: 3}
+  cardName: TestLongRange
   cardType: 0
   cardCost: 1
   towerPrefab: {fileID: 776760402519811003, guid: 0b4fac97fb0717d4c84365abf6d7ef4c, type: 3}

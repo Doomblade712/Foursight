@@ -20,7 +20,7 @@ public class GridCellHighlighter : MonoBehaviour
     // When the mouse enters the collider area
     void OnMouseEnter()
     {
-        Debug.Log("e");
+        //Debug.Log("e");
         if (!GameManager.Instance.PlayingCard)
         {
             spriteRenderer.color = highlightColor;

@@ -74,6 +74,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 HandleDragState();
                 if (!Mouse.current.leftButton.isPressed)
                 {
+                    Debug.Log("Help");
                     TransitionToState0();
                 }
                 break;
@@ -174,7 +175,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                     discardManager.AddToDiscard(GetComponent<CardDisplay>().cardData);
                     handManager.cardsInHand.Remove(gameObject);
                     handManager.UpdateHandVisuals();
-                    Debug.Log("placed Character");
+                    //Debug.Log("placed Character");
                     Destroy(this.gameObject);
                 }
             }

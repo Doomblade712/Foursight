@@ -2,7 +2,6 @@ using FoursightProductions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FoursightProductions;
 public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
